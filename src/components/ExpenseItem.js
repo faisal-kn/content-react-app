@@ -1,11 +1,12 @@
 import './ExpenseItem.css';
 
-function ExpenseItem() {
+function ExpenseItem(props) {
+  console.log(props);
   return (
     <div className="expense-item">
-      <div>July 19th 2021</div>
-      <h2 className="expense-item__description">Car Insurance</h2>
-      <div className="expense-item__price">345$</div>
+      <div>{props.date.toLocaleString()}</div>
+      <h2 className="expense-item__description">{props.title}</h2>
+      <div className="expense-item__price">{props.amount}</div>
     </div>
   );
 }
