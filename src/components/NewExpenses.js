@@ -14,13 +14,18 @@ function NewExpenses(props) {
     <div>
       <Card className="expenses">
         <ExpenseFilter currentYear={sendYear} onNewYear={filterYearHandler} />
-        {props.items.map((expense) => (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {props.items
+          .filter((expense) => {
+            return expense.date.getFullYear() === +sendYear;
+          })
+          .map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))}
       </Card>
     </div>
   );

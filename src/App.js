@@ -1,8 +1,9 @@
+import React from 'react';
 import NewExpenses from './components/NewExpenses';
 import Expense from './components/Expense';
 
 function App() {
-  const expenses = [
+  const Dummy_Expenses = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -23,12 +24,13 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+  const [expenses, setExpenses] = React.useState(Dummy_Expenses);
 
   const onSubmitHandler = (expense) => {
-    expenses.push(expense);
-    console.log(expenses);
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
   };
-
   return (
     <div>
       <Expense onAddExpense={onSubmitHandler}></Expense>
