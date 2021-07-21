@@ -1,7 +1,7 @@
 import React from 'react';
 import './ExpenseForm.css';
 
-function ExpenseForm() {
+function ExpenseForm(props) {
   const [title, titleChange] = React.useState('');
   const [amount, amountChange] = React.useState('');
   const [date, dateChange] = React.useState('');
@@ -29,7 +29,9 @@ function ExpenseForm() {
     titleChange('');
     amountChange('');
     dateChange('');
-    console.log(expenseData);
+    //We need to send this expenseData object to to app.js so we need to pass data to paret component.The best way is to pass
+    //a function as a prop.
+    props.dataTransferred(expenseData);
   };
 
   return (

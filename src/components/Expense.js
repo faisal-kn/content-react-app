@@ -1,10 +1,15 @@
 import ExpenseForm from './ExpenseForm';
 import './Expense.css';
 
-function Expense() {
+function Expense(props) {
+  const onSubmitHandler = (expenseData) => {
+    const data = { ...expenseData, id: Math.random() };
+    props.onAddExpense(data);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm dataTransferred={onSubmitHandler} />
     </div>
   );
 }

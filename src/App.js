@@ -24,9 +24,14 @@ function App() {
     },
   ];
 
+  const onSubmitHandler = (expense) => {
+    expenses.push(expense);
+    console.log(expenses);
+  };
+
   return (
     <div>
-      <Expense></Expense>
+      <Expense onAddExpense={onSubmitHandler}></Expense>
       <NewExpenses items={expenses}></NewExpenses>
     </div>
   );
