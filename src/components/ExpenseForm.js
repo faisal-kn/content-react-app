@@ -22,7 +22,7 @@ function ExpenseForm(props) {
     e.preventDefault();
     const expenseData = {
       title,
-      amount,
+      amount: +amount,
       date: new Date(date),
     };
     //we add value property to input fields to better clear the fields

@@ -33,7 +33,7 @@ function NewExpenses(props) {
     <div>
       <Card className="expenses">
         <ExpenseFilter currentYear={sendYear} onNewYear={filterYearHandler} />
-        <ExpenseChart expenses={props.items} />
+        <ExpenseChart expenses={filteredExpenses} />
         {renderedElement}
       </Card>
     </div>
