@@ -9,23 +9,30 @@ function NewExpenses(props) {
   const filterYearHandler = (year) => {
     setYear(year);
   };
-
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear() === +sendYear;
+  });
+  let renderedElement;
+  if (filteredExpenses.length === 0) {
+    renderedElement = (
+      <p className="expenses-list__fallback">No Expenses found</p>
+    );
+  } else {
+    renderedElement = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
+  
   return (
     <div>
       <Card className="expenses">
         <ExpenseFilter currentYear={sendYear} onNewYear={filterYearHandler} />
-        {props.items
-          .filter((expense) => {
-            return expense.date.getFullYear() === +sendYear;
-          })
-          .map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          ))}
+        {renderedElement}
       </Card>
     </div>
   );
