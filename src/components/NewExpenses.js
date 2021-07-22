@@ -3,6 +3,7 @@ import ExpenseItem from './ExpenseItem';
 import Card from './Card';
 import './NewExpenses.css';
 import ExpenseFilter from './ExpenseFilter';
+import ExpenseChart from './ExpenseChart';
 
 function NewExpenses(props) {
   const [sendYear, setYear] = React.useState('2021');
@@ -27,11 +28,12 @@ function NewExpenses(props) {
       />
     ));
   }
-  
+
   return (
     <div>
       <Card className="expenses">
         <ExpenseFilter currentYear={sendYear} onNewYear={filterYearHandler} />
+        <ExpenseChart expenses={props.items} />
         {renderedElement}
       </Card>
     </div>
